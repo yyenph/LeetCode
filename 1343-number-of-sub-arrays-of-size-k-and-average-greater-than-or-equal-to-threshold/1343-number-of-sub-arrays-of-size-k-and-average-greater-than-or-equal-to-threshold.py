@@ -21,7 +21,6 @@ class Solution(object):
             if right-left+1 == k:
                 if sum/k >= threshold:
                     count+=1
-                    print('count',count)
                 left+=1
                 sum-=arr[left-1]
             right+=1
