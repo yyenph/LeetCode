@@ -8,6 +8,5 @@ class Solution(object):
                 stack.pop()
             else:
                 stack.append(char)
-        print(''.join(stack))
         return ''.join(stack)
         
