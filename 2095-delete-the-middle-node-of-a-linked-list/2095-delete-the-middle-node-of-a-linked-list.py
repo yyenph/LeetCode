@@ -5,22 +5,31 @@
 #         self.next = next
 class Solution(object):
     def deleteMiddle(self, head):
-        #find out the lenght of the linked list
-        n = 0
-        currentNode = head
-        while currentNode:
-            n += 1
-            currentNode = currentNode.next
-        #find the mid node
-        if n <= 1:
+        # #find out the lenght of the linked list
+        # n = 0
+        # currentNode = head
+        # while currentNode:
+        #     n += 1
+        #     currentNode = currentNode.next
+        # #find the mid node
+        # if n <= 1:
+        #     return None
+        # mid = n //2
+        # # delete the middle one
+        # current = head
+        # #find the node before the mid node, to move pointer to next.next node
+        # for i in range(mid-1):
+        #     current = current.next
+        # current.next = current.next.next
+        # # return the head
+        # return head
+        #Solution 2 using slow and fast pointers
+        if not head or not head.next:
             return None
-        mid = n //2
-        # delete the middle one
-        current = head
-        #find the node before the mid node, to move pointer to next.next node
-        for i in range(mid-1):
-            current = current.next
-        current.next = current.next.next
-        # return the head
+        slow = fast = head
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        prev.next =slow.next
         return head
-        
