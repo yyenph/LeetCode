@@ -6,7 +6,6 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
-        maxD = count = 0
         if root is None:
             return 0
         else:
