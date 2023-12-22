@@ -8,17 +8,29 @@ class Solution(object):
     def leafSimilar(self, root1, root2):
         return self.dfs_leaf(root1) == self.dfs_leaf(root2)
     
+    # def dfs_leaf(self,node):
+    #     leaf_sequence = []
+    #     if not node.left and not node.right:
+    #         leaf_sequence.append(node.val)
+    #     else:
+    #         if node.left: #extend the leaf_sequence from each call
+    #             leaf_sequence.extend(self.dfs_leaf(node.left))
+    #         if node.right:
+    #             leaf_sequence.extend(self.dfs_leaf(node.right))
+    #     return leaf_sequence
+    #solution2: using Stack
     def dfs_leaf(self,node):
         leaf_sequence = []
-        if not node.left and not node.right:
-            leaf_sequence.append(node.val)
-        else:
-            if node.left: 
-                leaf_sequence.extend(self.dfs_leaf(node.left))
-            if node.right:
-                leaf_sequence.extend(self.dfs_leaf(node.right))
+        stack = [node]
+        while stack:
+            currentNode = stack.pop()
+            if currentNode.left:
+                stack.append(currentNode.left)
+            if currentNode.right:
+                stack.append(currentNode.right)
+            if not currentNode.left and not currentNode.right:
+                leaf_sequence.append(currentNode.val)
         return leaf_sequence
-        
             
             
             
