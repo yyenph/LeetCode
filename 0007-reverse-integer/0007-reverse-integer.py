@@ -11,9 +11,10 @@ class Solution(object):
             #take the last digit
             digit = int(ab_num % 10)
             answer = answer*10+ digit
-            if answer*sign > max_limit or answer*sign < min_limit:
+            correct_ans = answer*sign
+            if correct_ans > max_limit or correct_ans < min_limit:
                 return 0
             #remove the last digit
             ab_num = int(ab_num//10)
-        return answer * sign
+        return answer*sign
         
